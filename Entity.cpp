@@ -19,12 +19,11 @@ Entity::Entity(int _size, float _x, float _y) : size(_size) {
   pos = new Matrix(_x, _y);
 }
 
-void Entity::update() {
-  // Gravity
-  Matrix g(0, 9.8);
-  a->add(g);
-  v->add(*a);
-  pos->add(*v);
+void Entity::move(Matrix *vector) {
+  pos->add(*vector);
+}
+bool Entity::collision(Entity *other){
+  return pos->dist(*other->pos) < size;
 }
 
 void Entity::draw(const Cairo::RefPtr<Cairo::Context> &cr) const {

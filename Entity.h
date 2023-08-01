@@ -29,7 +29,8 @@ public:
 public:
   Entity(int size);
   Entity(int size,float _x, float _y);
-  void update(); 
+  void move(Matrix *vector); 
+  bool collision(Entity *other);
   void draw(const Cairo::RefPtr<Cairo::Context>& cr) const;
 };
 
